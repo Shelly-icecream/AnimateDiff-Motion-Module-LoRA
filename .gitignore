@@ -15,7 +15,6 @@ tensorboard/
 
 outputs/
 output/
-samples/
 generated/
 generated_videos/
 animatediff_output/
@@ -66,8 +65,8 @@ processed/
 *.WEBM
 *.flv
 *.FLV
-*.gif
-*.GIF
+
+
 
 ############################################################
 # ================== Archives =============================
