@@ -1,0 +1,76 @@
+# =============== 基础 ===============
+output_dir: "outputs/motionlora_train"
+pretrained_model_path: "runwayml/stable-diffusion-v1-5"
+image_finetune: false
+
+# =============== UNet + Motion Module 配置 ===============
+unet_additional_kwargs:
+  use_motion_module: true
+  motion_module_resolutions: [1, 2, 4, 8]
+  unet_use_cross_frame_attention: false
+  unet_use_temporal_attention: true
+
+  motion_module_type: Vanilla
+  motion_module_kwargs:
+    num_attention_heads: 4
+    num_transformer_block: 1
+    attention_block_types: ["Temporal_Self", "Temporal_Self"]
+    temporal_position_encoding: true
+    temporal_position_encoding_max_len: 24
+    temporal_attention_dim_div: 1
+    zero_initialize: false
+
+# 这里必须加载官方 motion module（不是 LoRA）
+unet_checkpoint_path: "models/Motion_Module/mm_sd_v15_v2.ckpt"
+
+# =============== LoRA 训练关键 ===============
+# 重点：trainable_modules 不能为空
+# 并且要指向 motion module 内部的 attention linear
+trainable_modules:
+  - "motion_modules"
+
+
+
+# =============== 数据 ===============
+train_data:
+  root_dir: "/home/xixiangtang/AIvideo/clips"
+  sample_size: 256
+  sample_stride: 1
+  n_frames: 8
+  sample_n_frames: 8
+  num_workers: 0
+
+
+# =============== Scheduler ===============
+noise_scheduler_kwargs:
+  num_train_timesteps: 1000
+  beta_start: 0.00085
+  beta_end: 0.012
+  beta_schedule: "linear"
+  steps_offset: 1
+  clip_sample: false
+
+# =============== 训练参数 ===============
+learning_rate: 5.0e-5
+train_batch_size: 1
+gradient_accumulation_steps: 1
+max_train_steps: 3000
+max_train_epoch: -1
+
+checkpointing_steps: 500
+checkpointing_epochs: -1
+
+mixed_precision_training: true
+enable_xformers_memory_efficient_attention: false
+
+global_seed: 42
+is_debug: false
+
+# =============== validation（可关掉） ===============
+validation_data:
+  prompts:
+    - "slow motion"
+  num_inference_steps: 25
+  guidance_scale: 8.0
+validation_steps: 999999
+validation_steps_tuple: []
