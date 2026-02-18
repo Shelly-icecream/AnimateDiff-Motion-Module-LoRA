@@ -6,7 +6,7 @@ This repository is a fork of the official AnimateDiff implementation. It focuses
 - **Workflow Tools:**
   - event_cut.py: Custom script for processing and cutting training video clips.
   - 爬虫.py: Automated tool for gathering high-quality training datasets.
-- **Optimized Training Configs:**Custom YAML files located in configs/training/v2/.
+- **Optimized Training Configs:** Custom YAML files located in configs/training/v2/.
 
 ## Slow Motion LoRA Progression (Training Results)
 
@@ -31,4 +31,5 @@ This project is built upon the incredible work of the AnimateDiff team:
 **[AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725)** [Yuwei Guo](https://guoyww.github.io/), [Ceyuan Yang](https://ceyuan.me/), [Anyi Rao](https://anyirao.com/), et al.
 
 ## Disclaimer
+
 This repository is for academic and research purposes. Please follow the license of the original AnimateDiff and Stable Diffusion models.
