@@ -10,7 +10,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          30
+  steps:          25
   guidance_scale: 7
 
   prompt:
@@ -20,23 +20,23 @@
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# ZoomOut
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_ZoomOut.ckpt"
-      alpha: 1.0
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-1000.ckpt"
+      alpha: 0.7
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
   lora_model_path: ""
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
@@ -47,7 +47,7 @@
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_PanLeft.ckpt"
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-3000.ckpt"
       alpha: 1.0
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
@@ -55,65 +55,65 @@
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# PanRight
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_PanRight.ckpt"
-      alpha: 1.0
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-3000.ckpt"
+      alpha: 0.7
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
   lora_model_path: ""
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> 1girl, solo, running forward, mid-stride, arms pumping, legs extended, dynamic movement, body leaning forward, hair flowing, sportswear, sneakers, outdoor track field, daylight, motion blur, action shot"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# TiltUp
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_TiltUp.ckpt"
-      alpha: 1.0
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-1000.ckpt"
+      alpha: 0.7
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
   lora_model_path: ""
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> 1girl, solo, running forward, mid-stride, arms pumping, legs extended, dynamic movement, body leaning forward, hair flowing, sportswear, sneakers, outdoor track field, daylight, motion blur, action shot"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# TiltDown
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_TiltDown.ckpt"
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-3000.ckpt"
       alpha: 1.0
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
@@ -121,54 +121,54 @@
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> 1girl, solo, running forward, mid-stride, arms pumping, legs extended, dynamic movement, body leaning forward, hair flowing, sportswear, sneakers, outdoor track field, daylight, motion blur, action shot"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# RollingAnticlockwise
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_RollingAnticlockwise.ckpt"
-      alpha: 1.0
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-3000.ckpt"
+      alpha: 0.7
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
   lora_model_path: ""
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 10
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
 
 
-# RollingClockwise
+
 - inference_config: "configs/inference/inference-v2.yaml"
   motion_module:    "models/Motion_Module/mm_sd_v15_v2.ckpt"
 
   motion_module_lora_configs:
-    - path:  "models/MotionLoRA/v2_lora_RollingClockwise.ckpt"
-      alpha: 1.0
+    - path:  "outputs/motionlora_train/training_motionlora-2026-02-18T11-13-05/checkpoints/motionlora-step-3000.ckpt"
+      alpha: 4.0
 
   dreambooth_path: "models/DreamBooth_LoRA/realisticVisionV60B1_v51VAE.safetensors"
   lora_model_path: ""
 
   seed:           43242532350557906
   steps:          25
-  guidance_scale: 7.5
+  guidance_scale: 7
 
   prompt:
-    - "photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
+    - "<slowmo> photo of coastline, rocks, storm weather, wind, waves, lightning, 8k uhd, dslr, soft lighting, high quality, film grain, Fujifilm XT3"
 
   n_prompt:
     - "blur, haze, deformed iris, deformed pupils, semi-realistic, cgi, 3d, render, sketch, cartoon, drawing, anime, mutated hands and fingers, deformed, distorted, disfigured, poorly drawn, bad anatomy, wrong anatomy, extra limb, missing limb, floating limbs, disconnected limbs, mutation, mutated, ugly, disgusting, amputation"
