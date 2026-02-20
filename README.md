@@ -37,6 +37,28 @@ To test the v6 LoRA, update your prompt config to include the LoRA path and use 
 ## Acknowledgements
 This project is built upon the incredible work of the AnimateDiff team:
 **[AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning](https://arxiv.org/abs/2307.04725)** [Yuwei Guo](https://guoyww.github.io/), [Ceyuan Yang](https://ceyuan.me/), [Anyi Rao](https://anyirao.com/), et al.
+We thank the authors for their excellent work.
+
+## Citation
+If you find this project useful, please cite:
+```bibtex
+@misc{zhang2026motionlora,
+  author       = {Xueli Zhang},
+  title        = {AnimateDiff Motion Module LoRA for Slow Motion Generation},
+  year         = {2026},
+  howpublished = {\url{https://github.com/Shelly-icecream/AnimateDiff-Motion-Module-LoRA}},
+  note         = {GitHub repository}
+}
+```
+This project is built upon AnimateDiff. Please also cite the original work:
+```bibtex
+@article{guo2023animatediff,
+  title={AnimateDiff: Animate Your Personalized Text-to-Image Diffusion Models without Specific Tuning},
+  author={Guo, Yuwei and Yang, Ceyuan and Rao, Anyi and Liang, Zhengyang and Wang, Yaohui and Qiao, Yu and Agrawala, Maneesh and Lin, Dahua and Dai, Bo},
+  journal={arXiv preprint arXiv:2307.04725},
+  year={2023}
+}
+```
 
 ## Disclaimer
 This repository is for academic and research purposes. Please follow the license of the original AnimateDiff and Stable Diffusion models.
