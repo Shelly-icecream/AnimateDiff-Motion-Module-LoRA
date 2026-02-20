@@ -16,7 +16,7 @@ This repository is a fork of the official AnimateDiff implementation. It focuses
 | 3        | 3000           | 1.0   | 7   | ![3](samples/coastline/3.gif) | ![6](samples/running/3.gif) |
 | 4        | 3000           | 0.7   | 10  | ![7](samples/coastline/4.gif) |                             |
 | 5        | 3000           | 4.0   | 7   | ![8](samples/coastline/5.gif) |                             |
-
+| 6        | 3000           | 0.0   | 7   | ![9](samples/coastline/0.gif) |                             |
 
 ## Quick Start
 ### 1. Environment Setup
