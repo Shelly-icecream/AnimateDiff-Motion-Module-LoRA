@@ -1,0 +1,227 @@
+🎯 一、第一大问题：没有先跑通官方
+❌ 一开始的问题
+你直接：改结构、改数据、改 LoRA、改训练逻辑
+但：官方 baseline 都没完整跑通这是最大风险。
+
+✅ 正确流程应该是
+1️⃣ 跑通官方 motion finetune
+2️⃣ 确认模型结构
+3️⃣ 打印模块名
+4️⃣ 验证数据 shape
+5️⃣ 再注入 LoRA
+
+永远记住：
+
+先保证“官方可运行”，再做结构改造。
+
+🎯 二、LoRA 注入错误风险
+你差点犯的几个致命点
+❌ 1. 注入整个 UNet
+
+最早你写：
+
+if "motion" in name:
+
+但没有精确筛选 attention。
+
+这可能导致：
+
+proj_in
+proj_out
+ff
+norm
+全部被注入
+❌ 2. 同时解冻 motion module
+
+你一开始：
+
+trainable_modules: ["motion_modules."]
+
+这会导致：
+
+原始权重 + LoRA 一起训练
+
+结果：
+
+💀 变成 full finetune
+❌ 3. LoRAConv 不必要
+
+Motion Module 里真正重要的是：
+
+Linear attention 层
+
+Conv 注入是噪音。
+
+✅ 现在的正确做法
+
+✔ 只注入：
+
+motion_modules.*
+
+✔ 且只针对：
+
+to_q
+to_k
+to_v
+to_out
+
+✔ 冻结原始模块
+✔ optimizer 只更新 lora_ 参数
+
+🎯 三、模块名称验证问题
+
+你做对的一点：
+
+print(unet.named_modules())
+
+这是非常关键的一步。
+
+很多人 LoRA 注入根本没成功。
+
+正确做法总结
+
+训练前必须验证：
+
+for name, module in unet.named_modules():
+    if "motion" in name:
+        print(name)
+
+确认：
+
+motion_modules 确实存在
+
+再写筛选函数：
+
+def is_motion_lora_target(name, module):
+🎯 四、Shape 问题（最容易白跑）
+
+AnimateDiff 的正确数据流是：
+
+Dataset:      [B, F, C, H, W]
+VAE encode:   [B, C, F, H, W]
+UNet 输入:    [B, C, F, H, W]
+
+如果你：
+
+[B,C,F,H,W]
+
+或者：
+
+[B,C,H,W,F]
+
+直接：
+
+训练白跑
+🎯 五、Diffusers 模型 vs A1111 ckpt
+
+你踩到这个问题：
+
+缺 diffusion_pytorch_model.bin
+
+原因：
+
+ckpt ≠ diffusers 格式
+
+AnimateDiff 训练必须是：
+
+stable-diffusion-v1-5/
+  unet/
+  vae/
+  text_encoder/
+
+不是：
+
+model.ckpt
+🎯 六、DDP 启动错误
+
+你遇到：
+
+KeyError: 'RANK'
+
+因为：
+
+python train.py
+
+不是：
+
+torchrun --nproc_per_node=1 train.py
+
+这是 PyTorch 分布式机制要求。
+
+🎯 七、optimizer 陷阱
+
+如果写：
+
+optimizer = AdamW(unet.parameters())
+
+哪怕 requires_grad=False：
+
+optimizer 仍然会遍历全部参数
+
+虽然不会更新，但：
+
+性能下降
+显存额外开销
+
+正确做法：
+
+trainable_params = filter(lambda p: p.requires_grad, unet.parameters())
+🎯 八、超参数问题
+
+LoRA 推荐：
+
+参数	建议
+rank	4 或 8
+alpha	= rank
+lr	1e-4
+weight_decay	0
+batch	小一点
+gradient_checkpoint	开
+🎯 九、标签设计问题（你问的“风格开头”）
+
+Motion LoRA 训练时：
+
+Prompt 结构建议：
+
+style_tag, subject, action, environment
+
+例如：
+
+slow motion, cinematic, girl running, sunset beach
+
+为什么风格放前面？
+
+CLIP 编码器对前部 token 权重更高。
+
+🎯 十、最大结构认知误区
+
+实际结构是：
+
+down_blocks.X.motion_modules.Y.temporal_transformer.transformer_blocks.0.attention_blocks.Z
+
+Z 才是：
+
+0 = self attention
+1 = cross attention
+
+Self Attention
+frame1 ←→ frame2 ←→ frame3 ←→ frame4
+
+时间内部互相影响。
+
+Cross Attention
+frame features  ←→  text embedding
+
+视频去看文本。
+
+🧠 你这次训练真正的核心认知
+
+你现在在做的不是：
+
+“微调一个模型”
+
+你在做的是：
+
+在 temporal transformer 里插入低秩适配器来改变时间动态建模
+
+这是结构级改造，不是参数级微调。
