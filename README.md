@@ -11,12 +11,13 @@ This repository is a fork of the official AnimateDiff implementation. It focuses
 ## Slow Motion LoRA Progression (Training Results)
 | versions | training steps | alpha | cfg | effect preview 1              | effect preview 2            |
 |:---------|:---------------|:------|:----|:------------------------------|:----------------------------|
-| 1        | 3000           | 0.7   | 7   | ![1](samples/coastline/1.gif) | ![4](samples/running/1.gif) |
-| 2        | 1000           | 0.7   | 7   | ![2](samples/coastline/2.gif) | ![5](samples/running/2.gif) |
-| 3        | 3000           | 1.0   | 7   | ![3](samples/coastline/3.gif) | ![6](samples/running/3.gif) |
-| 4        | 3000           | 0.7   | 10  | ![7](samples/coastline/4.gif) |                             |
-| 5        | 3000           | 4.0   | 7   | ![8](samples/coastline/5.gif) |                             |
-| 6        | 3000           | 0.0   | 7   | ![9](samples/coastline/0.gif) |                             |
+| 1        | 3000           | 0.0   | 7   | ![9](samples/coastline/0.gif) |                             |
+| 2        | 3000           | 0.7   | 7   | ![1](samples/coastline/1.gif) | ![4](samples/running/1.gif) |
+| 3        | 1000           | 0.7   | 7   | ![2](samples/coastline/2.gif) | ![5](samples/running/2.gif) |
+| 4        | 3000           | 1.0   | 7   | ![3](samples/coastline/3.gif) | ![6](samples/running/3.gif) |
+| 5        | 3000           | 0.7   | 10  | ![7](samples/coastline/4.gif) |                             |
+| 6        | 3000           | 4.0   | 7   | ![8](samples/coastline/5.gif) |                             |
+
 
 ## Quick Start
 ### 1. Environment Setup
