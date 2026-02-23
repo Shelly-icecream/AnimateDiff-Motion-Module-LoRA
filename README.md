@@ -1,3 +1,4 @@
+⭐ 如果项目对你有帮助，欢迎 Star！
 # AnimateDiff - Custom Motion Module LoRA (Slow Motion Edition)
 This repository is a fork of the official AnimateDiff implementation. It focuses on training and fine-tuning Custom Motion LoRAs, specifically optimized for High-Quality Slow Motion effects.
 
