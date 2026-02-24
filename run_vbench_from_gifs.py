@@ -1,4 +1,5 @@
 import os
+os.environ["CUDA_VISIBLE_DEVICES"] = ""
 import re
 import csv
 import json
@@ -9,35 +10,43 @@ import subprocess
 from pathlib import Path
 from datetime import datetime
 
-# 1) GIF 输入目录（可以包含子目录）
-GIF_ROOT = r"D:\samples\coastline"
 
-# 2) 实验输出目录（脚本会自动创建）
+GIF_ROOT = r"D:\AnimateDiff\samples\coastline"
+
 EXP_ROOT = r"D:\AnimateDiff\vbench_experiments\exp_001"
 
-# 3) 转码规格（科研可复现）
 FPS = 8                 # VBench 常用 8fps
 SHORT_EDGE = 512        # 统一短边 512（常用）
 CRF = 18                # 质量：18~23；越小越清晰也越大
 PRESET = "medium"       # 编码速度/质量权衡：slow更大更慢
 
-# 4) VBench 运行命令（按你本地实际情况改）
-# 例子1：在 vbench repo 根目录运行 eval.py
 VBENCH_WORKDIR = r"D:\VBench-master"
 VBENCH_CMD = (
-    r"python eval.py "
+    r"python evaluate.py "
     r'--videos_path "{videos_dir}" '
-    r'--output_path "{results_dir}"'
+    r'--output_path "{results_dir}" '
+    r"--read_frame 1 "
+    r"--dimension "
+    r"motion_smoothness "
+    r"temporal_flickering "
+    r"subject_consistency "
+    r"background_consistency "
+    r"aesthetic_quality "
+    r"imaging_quality"
 )
-
-# 如果你的 VBench 命令不同，比如叫 run.py 或需要额外参数，
-# 就把上面 VBENCH_CMD 改成你能在命令行跑通的那条。
-
-
 
 def run(cmd, cwd=None):
     print(f"[CMD] {cmd}")
-    p = subprocess.run(cmd, cwd=cwd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, text=True)
+    p = subprocess.run(
+        cmd,
+        cwd=cwd,
+        shell=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
     print(p.stdout)
     if p.returncode != 0:
         raise RuntimeError(f"Command failed: {cmd}\n{p.stdout}")
@@ -118,7 +127,6 @@ def main():
     manifest_csv = exp_root / "manifest.csv"
     rows = []
     print(f"[INFO] Found {len(gifs)} GIFs")
-
 
     # 目录规则：videos/<group>/<id>.mp4
     # group = 相对路径的父目录名（没有就 root）
