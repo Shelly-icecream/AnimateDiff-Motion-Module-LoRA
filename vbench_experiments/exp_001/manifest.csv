@@ -1,0 +1,7 @@
+index,gif_path,gif_sha1,group,mp4_path,mp4_sha1,width,height,r_frame_rate,codec,pix_fmt
+1,D:\AnimateDiff\samples\coastline\0.gif,aee0e413423a358c90bbd51e6f72005e65646d6d,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0001.mp4,d06ed8332cc9852e1813eb4e30fa2e56cdc7f60f,512,512,8/1,h264,yuv420p
+2,D:\AnimateDiff\samples\coastline\1.gif,ce971abd98c151f979a157aa657c72a0a18df731,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0002.mp4,9b66c0e760a0e00eb9a6f70f015699c339cde19a,512,512,8/1,h264,yuv420p
+3,D:\AnimateDiff\samples\coastline\2.gif,db6f591809f3b99eeef9f1002d2dd55b71fb137f,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0003.mp4,1f6f18a360f1d3176394732042d64583e551c7e3,512,512,8/1,h264,yuv420p
+4,D:\AnimateDiff\samples\coastline\3.gif,684afb39db56a90b573954a6e28c57f6f009640d,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0004.mp4,48967bdfb34e93dec60bc16fa003a2bf5ffdc88e,512,512,8/1,h264,yuv420p
+5,D:\AnimateDiff\samples\coastline\4.gif,5b7c8047ba98d54d79d163686afe112020771b71,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0005.mp4,7da1ddad9b89d19cec0523dc6a7cd2ce21ffdfa4,512,512,8/1,h264,yuv420p
+6,D:\AnimateDiff\samples\coastline\5.gif,c4a2e4096a7d15e84f52559d19ad3ad7c877e18b,root,D:\AnimateDiff\vbench_experiments\exp_001\videos\root\0006.mp4,578e683beb8140828cc5ce321a82c0309e9a243f,512,512,8/1,h264,yuv420p

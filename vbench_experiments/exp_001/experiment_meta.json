@@ -1,0 +1,11 @@
+{
+  "time": "2026-02-24T15:09:00",
+  "gif_root": "D:\\AnimateDiff\\samples\\coastline",
+  "exp_root": "D:\\AnimateDiff\\vbench_experiments\\exp_001",
+  "fps": 8,
+  "short_edge": 512,
+  "crf": 18,
+  "preset": "medium",
+  "vbench_workdir": "D:\\VBench-master",
+  "vbench_cmd_template": "python evaluate.py --videos_path \"{videos_dir}\" --output_path \"{results_dir}\" --read_frame 1 --dimension motion_smoothness temporal_flickering subject_consistency background_consistency aesthetic_quality imaging_quality"
+}
