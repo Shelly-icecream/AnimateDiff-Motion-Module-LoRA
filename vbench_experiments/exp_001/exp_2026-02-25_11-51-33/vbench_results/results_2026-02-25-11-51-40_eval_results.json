@@ -1,0 +1,188 @@
+{
+    "motion_smoothness": [
+        0.9851728966775579,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 0.9907052479093036
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 0.9837547688702353
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 0.9854531862488648
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 0.9816929992618791
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 0.9826403966025701
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 0.986790781172495
+            }
+        ]
+    ],
+    "temporal_flickering": [
+        0.9888700041895598,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 0.9924408524644142
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 0.9878959749259201
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 0.9891178009556789
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 0.986507350323247
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 0.9868088937273213
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 0.9904491527407777
+            }
+        ]
+    ],
+    "subject_consistency": [
+        0.9773443463252999,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 0.984795892447756
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 0.9817446214065217
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 0.9744598776624914
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 0.9736516627303341
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 0.970216925729785
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 0.9791970979749111
+            }
+        ]
+    ],
+    "background_consistency": [
+        0.9813653600146199,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 0.978759765625,
+                "video_sim": 55.789306640625,
+                "cnt_per_video": 57
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 0.9834412691885965,
+                "video_sim": 56.05615234375,
+                "cnt_per_video": 57
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 0.9797106291118421,
+                "video_sim": 55.843505859375,
+                "cnt_per_video": 57
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 0.9800447162828947,
+                "video_sim": 55.862548828125,
+                "cnt_per_video": 57
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 0.9813939144736842,
+                "video_sim": 55.939453125,
+                "cnt_per_video": 57
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 0.9848418654057017,
+                "video_sim": 56.135986328125,
+                "cnt_per_video": 57
+            }
+        ]
+    ],
+    "aesthetic_quality": [
+        0.582147553563118,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 0.6182875633239746
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 0.6393014788627625
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 0.6272311806678772
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 0.6209424734115601
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 0.6710759997367859
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 0.3160466253757477
+            }
+        ]
+    ],
+    "imaging_quality": [
+        0.7236356195910224,
+        [
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0001.mp4",
+                "video_results": 79.78857750728213
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0002.mp4",
+                "video_results": 77.7891353738719
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0003.mp4",
+                "video_results": 77.94490077577788
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0004.mp4",
+                "video_results": 75.92171675583413
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0005.mp4",
+                "video_results": 78.49884651447165
+            },
+            {
+                "video_path": "D:\\AnimateDiff\\vbench_experiments\\exp_001\\exp_2026-02-25_11-51-33\\videos\\0006.mp4",
+                "video_results": 44.23819482737574
+            }
+        ]
+    ]
+}
