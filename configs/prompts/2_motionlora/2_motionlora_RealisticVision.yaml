@@ -10,7 +10,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -32,7 +32,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -54,7 +54,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -76,7 +76,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -98,7 +98,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -120,7 +120,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
@@ -142,7 +142,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 10
 
   prompt:
@@ -164,7 +164,7 @@
   lora_model_path: ""
 
   seed:           43242532350557906
-  steps:          25
+  steps:          40
   guidance_scale: 7
 
   prompt:
