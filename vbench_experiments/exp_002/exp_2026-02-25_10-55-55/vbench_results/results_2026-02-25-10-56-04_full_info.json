@@ -1,0 +1,44 @@
+[
+    {
+        "prompt_en": "0001",
+        "dimension": [
+            "motion_smoothness",
+            "temporal_flickering",
+            "subject_consistency",
+            "background_consistency",
+            "aesthetic_quality",
+            "imaging_quality"
+        ],
+        "video_list": [
+            "D:\\AnimateDiff\\vbench_experiments\\exp_002\\exp_2026-02-25_10-55-55\\videos\\0001.mp4"
+        ]
+    },
+    {
+        "prompt_en": "0002",
+        "dimension": [
+            "motion_smoothness",
+            "temporal_flickering",
+            "subject_consistency",
+            "background_consistency",
+            "aesthetic_quality",
+            "imaging_quality"
+        ],
+        "video_list": [
+            "D:\\AnimateDiff\\vbench_experiments\\exp_002\\exp_2026-02-25_10-55-55\\videos\\0002.mp4"
+        ]
+    },
+    {
+        "prompt_en": "0003",
+        "dimension": [
+            "motion_smoothness",
+            "temporal_flickering",
+            "subject_consistency",
+            "background_consistency",
+            "aesthetic_quality",
+            "imaging_quality"
+        ],
+        "video_list": [
+            "D:\\AnimateDiff\\vbench_experiments\\exp_002\\exp_2026-02-25_10-55-55\\videos\\0003.mp4"
+        ]
+    }
+]
