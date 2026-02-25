@@ -15,8 +15,8 @@ GIF_ROOT = r"D:\AnimateDiff\samples\coastline"
 
 EXP_ROOT = r"D:\AnimateDiff\vbench_experiments\exp_001"
 
-FPS = 8                 # VBench 常用 8fps
-SHORT_EDGE = 512        # 统一短边 512（常用）
+FPS = 8
+SHORT_EDGE = 512
 CRF = 18                # 质量：18~23；越小越清晰也越大
 PRESET = "medium"       # 编码速度/质量权衡：slow更大更慢
 
@@ -25,8 +25,9 @@ VBENCH_CMD = (
     r"python evaluate.py "
     r'--videos_path "{videos_dir}" '
     r'--output_path "{results_dir}" '
-    r"--read_frame 1 "
-    r"--dimension "
+    r"--mode custom_input "
+    
+    r'--dimension motion_smoothness temporal_flickering subject_consistency background_consistency aesthetic_quality imaging_quality'
     r"motion_smoothness "
     r"temporal_flickering "
     r"subject_consistency "
