@@ -28,15 +28,22 @@ git clone https://github.com/Shelly-icecream/AnimateDiff-Motion-Module-LoRA.git
 cd AnimateDiff-Motion-Module-LoRA
 pip install -r requirements.txt
 ```
-### 2. Download pretrained motion_module and checkpoints
+### 2. Download pretrained models and checkpoints
 ```bash
-huggingface-cli download guoyww/animatediff \  mm_sd_v15_v2.ckpt \  --local-dir ~/AnimateDiff/models/Motion_Module \  --local-dir-use-symlinks False
+pip install -U huggingface_hub
+huggingface-cli download runwayml/stable-diffusion-v1-5 \
+  --local-dir stable-diffusion-v1-5 \
+  --local-dir-use-symlinks False
+huggingface-cli download guoyww/animatediff \
+  mm_sd_v15_v2.ckpt \  
+  --local-dir ~/AnimateDiff/models/Motion_Module \  
+  --local-dir-use-symlinks False
 ```
 https://huggingface.co/Shellyice/animatediff-motion-lora/blob/main/motionlora-step-1000.ckpt
 https://huggingface.co/Shellyice/animatediff-motion-lora/blob/main/motionlora-step-3000.ckpt
 
 ### 3. Inference with Slow Motion LoRA
-```
+```bash
 python -m scripts.animate
 –config configs/prompts/2_motionlora/2_motionlora_RealisticVision.yaml
 ```
