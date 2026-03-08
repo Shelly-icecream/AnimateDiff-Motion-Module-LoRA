@@ -28,13 +28,18 @@ git clone https://github.com/Shelly-icecream/AnimateDiff-Motion-Module-LoRA.git
 cd AnimateDiff-Motion-Module-LoRA
 pip install -r requirements.txt
 ```
-### 2. Training your own Motion LoRA
-Use the optimized config provided in this repo:
+### 2. Download pretrained motion_module and checkpoints
 ```bash
-python train.py --config configs/training/v2/training_motionlora.yaml
+huggingface-cli download guoyww/animatediff \  mm_sd_v15_v2.ckpt \  --local-dir ~/AnimateDiff/models/Motion_Module \  --local-dir-use-symlinks False
 ```
+https://huggingface.co/Shellyice/animatediff-motion-lora/blob/main/motionlora-step-1000.ckpt
+https://huggingface.co/Shellyice/animatediff-motion-lora/blob/main/motionlora-step-3000.ckpt
+
 ### 3. Inference with Slow Motion LoRA
-To test the v6 LoRA, update your prompt config to include the LoRA path and use "<slowmo>" prompts.
+```
+python -m scripts.animate
+–config configs/prompts/2_motionlora/2_motionlora_RealisticVision.yaml
+```
 
 ## Acknowledgements
 This project is built upon the incredible work of the AnimateDiff team:
