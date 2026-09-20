@@ -41,6 +41,7 @@ __pycache__/
 ############################################################
 
 data/
+!animatediff/data/
 dataset/
 datasets/
 videos/
@@ -116,6 +117,7 @@ models/MotionLoRA/*
 
 scripts/*
 !scripts/animate.py
+!scripts/data/
 
 ############################################################
 # ================== OSS / Cloud ==========================
