@@ -51,7 +51,7 @@ def load_diffusers_lora(pipeline, state_dict, alpha=0.6):
 
         curr_layer = pipeline.unet
 
-        # 逐层查找
+        # Traverse the module hierarchy.
         for name in layer_infos:
             if hasattr(curr_layer, name):
                 curr_layer = getattr(curr_layer, name)
@@ -86,7 +86,7 @@ def load_diffusers_lora(pipeline, state_dict, alpha=0.6):
         print("loaded =", loaded, "skipped =", skipped)
         print(f"[Loaded] {model_key}")
 
-    print("✅ Motion LoRA loaded safely.")
+    print("Motion LoRA loaded safely.")
     return pipeline
 
 
@@ -101,7 +101,7 @@ def convert_lora(
 
     for key in state_dict.keys():
 
-        # 只处理 lora_A
+        # Process only lora_A keys.
         if "lora_A" not in key:
             continue
 
@@ -114,14 +114,14 @@ def convert_lora(
             print(f"[Warning] Missing pair for {key}")
             continue
 
-        # 去掉 .lora_A
+        # Remove the .lora_A suffix.
         model_key = key.replace(".lora_A", "")
 
         layer_infos = model_key.split(".")
 
         curr_layer = pipeline.unet
 
-        # 逐级定位层
+        # Locate the target layer in the module hierarchy.
         for name in layer_infos:
             if hasattr(curr_layer, name):
                 curr_layer = getattr(curr_layer, name)
@@ -151,7 +151,7 @@ def convert_lora(
 
         print(f"[Loaded] {model_key} | delta shape: {delta.shape}")
 
-    print("✅ Motion LoRA loaded successfully.")
+    print("Motion LoRA loaded successfully.")
 
     return pipeline
 

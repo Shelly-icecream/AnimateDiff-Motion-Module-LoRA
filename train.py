@@ -514,7 +514,7 @@ def main(
                 save_obj = {
                     "epoch": epoch,
                     "global_step": global_step,
-                    "state_dict": lora_sd,  # 只保存 LoRA
+                    "state_dict": lora_sd,  
                 }
 
                 if step == len(train_dataloader) - 1:
@@ -522,6 +522,7 @@ def main(
                 else:
                     ckpt_name = f"motionlora-step-{global_step}.ckpt"
 
+                # Save only LoRA weights, epoch, and global step; base model weights are excluded.
                 torch.save(save_obj, os.path.join(save_path, ckpt_name))
                 logging.info(f"Saved MotionLoRA checkpoint to {save_path}/{ckpt_name} (global_step: {global_step})")
 

@@ -74,7 +74,7 @@ class VideoDataset(Dataset):
             self.slowmo_tags[p] = "<slowmo>"
 
         if len(paths) == 0:
-            print("⚠️ No clips passed slowmo filter. Fallback to full dataset.")
+            print("No clips passed slowmo filter. Fallback to full dataset.")
             self.valid_paths = self.video_paths
             self.slowmo_scores = None
             self.slowmo_tags = {}
@@ -154,7 +154,7 @@ class VideoDataset(Dataset):
             else:
                 base_prompt = ""
 
-            # 如果启用 slowmo 并且该视频被判定为慢动作
+            # Add the slow-motion tag if sampling is enabled and the video passed the filter.
             if self.enable_slowmo_sampling and path in self.slowmo_tags:
                 prompt = "<slowmo> " + base_prompt
             else:

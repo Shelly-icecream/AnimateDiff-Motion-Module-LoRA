@@ -4,7 +4,6 @@ from tqdm import tqdm
 import os
 import glob
 
-# ========= 工具函数 =========
 def get_videos_glob(folder_path):
     video_files = []
     patterns = ['*.mp4', '*.avi', '*.mov', '*.mkv']
@@ -22,30 +21,29 @@ def iou_1d(a0, a1, b0, b1):
     union = max(1e-9, (a1 - a0) + (b1 - b0) - inter)
     return inter / union
 
-# ========= 参数区 =========
-INPUT_DIR = r"D:\AnimateDiff\raw"
-OUTPUT_DIR = r"D:\AnimateDiff\clips"
+INPUT_DIR = "data/raw"
+OUTPUT_DIR = "data/clips"
 
 CLIP_SECONDS = 5
 FPS_SAMPLE = 30
 MAX_CLIPS = 5
 
-THRESH_PERCENTILE = 92            # 用分位数做阈值，越大越严格(90~97建议)
-SMOOTH_WINDOW = 5                 # 平滑窗口（采样点）
-MIN_EVENT_SECONDS = 0.4           # 事件最短持续时间(秒)
-MIN_GAP_SECONDS = 1.0             # 事件之间最小间隔(秒)，太近就合并
-MAX_EVENT_SECONDS = 3.0           # 事件最长持续时间(秒)，太长就只取最强子段
-CLIP_IOU_DEDUP = 0.55             # clip重叠超过这个比例就认为重复
+THRESH_PERCENTILE = 92            # Percentile threshold; higher values are stricter (90-97 recommended)
+SMOOTH_WINDOW = 5                 # Smoothing window (sample points)
+MIN_EVENT_SECONDS = 0.4           # Minimum event duration (seconds)
+MIN_GAP_SECONDS = 1.0             # Minimum gap between events (seconds); merge events that are too close
+MAX_EVENT_SECONDS = 3.0           # Maximum event duration (seconds); keep only the strongest segment if exceeded
+CLIP_IOU_DEDUP = 0.55             # Treat clips with overlap above this ratio as duplicates
 
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 videos = get_videos_glob(INPUT_DIR)
-print(f"🎬 发现 {len(videos)} 个视频")
+print(f"Found {len(videos)} videos")
 
-# ========= 主循环 =========
+# ========= Main loop =========
 for video_path in videos:
     video_name = os.path.splitext(os.path.basename(video_path))[0]
-    print(f"\n▶ 处理视频: {video_name}")
+    print(f"\nProcessing video: {video_name}")
 
     video_out_dir = os.path.join(OUTPUT_DIR, video_name)
     os.makedirs(video_out_dir, exist_ok=True)
@@ -55,7 +53,7 @@ for video_path in videos:
     frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
 
     if fps <= 0 or frame_count <= 0:
-        print("⚠️ 无法读取视频，跳过")
+        print("Unable to read video; skipping")
         cap.release()
         continue
 
@@ -70,7 +68,7 @@ for video_path in videos:
     flow_energy = []
     sample_frame_ids = []
 
-    print("  计算光流能量中...")
+    print("Computing optical flow energy...")
 
     for i in tqdm(range(1, frame_count), leave=False):
         ret, frame = cap.read()
@@ -104,22 +102,22 @@ for video_path in videos:
     flow_energy = np.array(flow_energy, dtype=np.float32)
 
     if len(flow_energy) < 10:
-        print("❌ 有效采样帧太少，跳过")
+        print("Too few valid sampled frames; skipping")
         continue
 
-    # ========= 平滑 + 阈值 =========
+    # ========= Smoothing + thresholding =========
     flow_smooth = moving_average(flow_energy, SMOOTH_WINDOW)
 
-    # 分位数阈值，比 max*ratio 稳定太多
+    # A percentile threshold is much more stable than max * ratio
     threshold = np.percentile(flow_smooth, THRESH_PERCENTILE)
 
     event_indices = np.where(flow_smooth >= threshold)[0]
     if len(event_indices) == 0:
-        print("❌ 未检测到明显事件")
+        print("No significant events detected")
         continue
 
-    # ========= 合并事件（按时间间隔） =========
-    # 把 index -> time
+    # ========= Merge events by time gap =========
+    # Convert indices to timestamps
     sample_times = np.array(sample_frame_ids) / fps
     idx_to_time = lambda idx: float(sample_times[idx])
 
@@ -136,7 +134,7 @@ for video_path in videos:
             current = [idx]
     events.append(current)
 
-    # ========= 过滤事件长度 =========
+    # ========= Filter events by duration =========
     min_event = MIN_EVENT_SECONDS
     filtered = []
     for ev in events:
@@ -146,13 +144,13 @@ for video_path in videos:
             filtered.append(ev)
 
     if len(filtered) == 0:
-        print("❌ 事件都太短（噪声），跳过")
+        print("All events are too short (noise); skipping")
         continue
 
-    # ========= 给事件打分（强度）并排序 =========
+    # ========= Score events by intensity and sort =========
     scored = []
     for ev in filtered:
-        # event score 用 smooth 的均值/最大值都行，这里用 mean 更稳
+        # Use the mean or maximum smoothed energy as the event score; the mean is more stable
         score = float(flow_smooth[ev].mean())
         t0 = idx_to_time(ev[0])
         t1 = idx_to_time(ev[-1])
@@ -160,7 +158,7 @@ for video_path in videos:
 
     scored.sort(key=lambda x: x[0], reverse=True)
 
-    # ========= 切视频 =========
+    # ========= Cut video clips =========
     cap = cv2.VideoCapture(video_path)
     width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
@@ -174,12 +172,12 @@ for video_path in videos:
         if clip_id >= MAX_CLIPS:
             break
 
-        # 如果事件太长，只取事件中心附近（防止切出“全程都在动”的无聊段）
+        # For long events, keep the region near the center to avoid uninteresting clips with constant motion
         center_time = float((t0 + t1) / 2.0)
         start_time = max(0.0, center_time - CLIP_SECONDS / 2)
         end_time = start_time + CLIP_SECONDS
 
-        # ========= 去重：和已有 clip 重叠太多就跳过 =========
+        # ========= Deduplicate: skip clips that overlap too much with existing clips =========
         duplicate = False
         for (u0, u1) in used_windows:
             if iou_1d(start_time, end_time, u0, u1) >= CLIP_IOU_DEDUP:
@@ -188,7 +186,7 @@ for video_path in videos:
         if duplicate:
             continue
 
-        # ========= 真正写入 =========
+        # ========= Write the clip =========
         cap.set(cv2.CAP_PROP_POS_MSEC, start_time * 1000)
 
         out_path = os.path.join(video_out_dir, f"clip_{clip_id:02d}.mp4")
@@ -206,4 +204,4 @@ for video_path in videos:
         clip_id += 1
 
     cap.release()
-    print(f"✅ 生成 {clip_id} 个 clips")
+    print(f"Generated {clip_id} clips")

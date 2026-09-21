@@ -38,7 +38,7 @@ def is_good_video(info):
 def search_videos(query, n=200):
     ydl_opts = {
         "quiet": True,
-        "extract_flat": True,  # 只拿列表，不下载
+        "extract_flat": True,  
         "skip_download": True,
     }
     search_query = f"ytsearch{n}:{query}"
@@ -79,8 +79,8 @@ def download_youtube_videos(tasks, max_per_query):
         os.makedirs(folder, exist_ok=True)
 
         print("\n" + "=" * 40)
-        print(f"主题: {folder}")
-        print(f"关键词: {query}")
+        print(f"Topic: {folder}")
+        print(f"Keywords: {query}")
         print("=" * 40)
 
         urls = search_videos(query, n=300)
@@ -92,17 +92,17 @@ def download_youtube_videos(tasks, max_per_query):
             try:
                 if download_one(url, folder):
                     ok += 1
-                    print(f"✅ 已下载 {ok}/{max_per_query}")
+                    print(f"Downloaded {ok}/{max_per_query}")
             except Exception as e:
                 print(f"[error] {e}")
 
-        print(f"🎉 {folder} 完成: {ok}/{max_per_query}")
+        print(f"{folder} completed: {ok}/{max_per_query}")
 
 
 if __name__ == "__main__":
     tasks = {
-        #"SlowMotion_240fps": "slow motion 240fps walking",
-        #"SlowMotion_Action": "slow motion 240fps running",
+        "SlowMotion_240fps": "slow motion 240fps walking",
+        "SlowMotion_Action": "slow motion 240fps running",
         "SlowMotion_HairCloth": "slow motion 240fps hair flip",
     }
 
